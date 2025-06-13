@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 // Components
@@ -6,7 +6,12 @@ import Input from "../../components/Inputs/Input";
 import AuthLayout from "../../components/layout/Auth";
 
 // Utils
+import axiosInst from "../../utils/axios";
+import { API_ENDPOINT } from "../../utils/api";
 import { validateEmail } from "../../utils/helper";
+
+// Context
+import { UserContext } from "../../context/userContext";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +19,7 @@ const SignIn = () => {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
+  const { updateUser } = useContext(UserContext);
 
   const handleSignin = async (e) => {
     e.preventDefault();
@@ -29,6 +35,27 @@ const SignIn = () => {
     }
 
     setError("");
+
+    try {
+      const response = await axiosInst.post(API_ENDPOINT.AUTH.SIGNIN, {
+        email,
+        password,
+      });
+
+      const { token, user } = response.data;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        updateUser(user);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("Something Went Wrong, Try Again");
+      }
+    }
   };
 
   return (
