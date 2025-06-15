@@ -15,7 +15,7 @@ export const API_ENDPOINT = {
     DELETE_INCOME: (incomeId) => `/api/income/${incomeId}`,
     DOWNLOAD_INCOME_EXCEL: "/api/income/download",
   },
-  Expense: {
+  EXPENSE: {
     ADD_EXPENSE: "/api/expense/add",
     GET_EXPENSE: "/api/expense",
     DELETE_EXPENSE: (expenseId) => `/api/expense/${expenseId}`,
