@@ -13,7 +13,6 @@ const uploadImage = async (imageFile) => {
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
-    console.log(responce.data);
     return responce.data;
   } catch (error) {
     console.error("Error Uploading The Image", error);

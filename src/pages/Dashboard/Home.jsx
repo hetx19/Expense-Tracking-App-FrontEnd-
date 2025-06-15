@@ -45,7 +45,7 @@ const Home = () => {
         setDashboardData(responce.data);
       }
     } catch (error) {
-      console.log("Something Went Wrong. Please Try Again", error);
+      console.error("Something Went Wrong. Please Try Again", error);
     } finally {
       setLoading(false);
     }
