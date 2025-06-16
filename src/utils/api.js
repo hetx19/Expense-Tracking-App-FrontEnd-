@@ -1,10 +1,11 @@
-export const BASE_URL = "http://localhost:5000";
+export const BASE_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 export const API_ENDPOINT = {
   AUTH: {
     SIGNIN: "/api/auth/signin",
     SIGNUP: "/api/auth/signup",
     GET_USER: "/api/auth/getUser",
+    UPDATE_USER: "/api/auth/updateUser",
   },
   DASHBOARD: {
     GET_DASHBOARD_DATA: "/api/dashboard",
