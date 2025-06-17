@@ -6,8 +6,6 @@ import { LuDownload } from "react-icons/lu";
 import TransactionInfo from "../cards/TransactionInfo";
 
 const ExpenseList = ({ transactions, onDelete, onDownload }) => {
-  console.log(transactions);
-
   return (
     <div className="card">
       <div className="flex items-center justify-between">
